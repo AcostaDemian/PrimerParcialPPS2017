@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -9,6 +10,9 @@ import { HomePage } from '../pages/home/home';
 import { Login } from '../pages/login/login';
 import { About } from '../pages/about/about';
 import { Trivia } from '../pages/trivia/trivia';
+import { Signup } from '../pages/signup/signup';
+
+import { ModalPage } from '../pages/modal/modal';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,12 +38,15 @@ const myFirebaseAuthConfig = {
     HomePage,
     Login,
     About,
-    Trivia
+    Trivia,
+    Signup,
+    ModalPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
+    Ng2SmartTableModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -47,7 +54,9 @@ const myFirebaseAuthConfig = {
     HomePage,
     Login,
     About,
-    Trivia
+    Trivia,
+    Signup,
+    ModalPage
   ],
   providers: [
     StatusBar,

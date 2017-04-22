@@ -7,12 +7,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
-
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+<ion-content padding> 
+  <div *ngFor="let pregYresp of preguntaYrespuestas">
+    <div *ngFor="let pYr of pregYresp">
+      <ion-card>      
+        <ion-card-header>
+          {{pYr.pregunta}}
+        </ion-card-header>        
+        <ion-card-content *ngIf="pYr.valor == 'true'">
+          <p style='color:green'>{{pYr.respuesta}}</p>   
+        </ion-card-content>     
+        <ion-card-content *ngIf="pYr.valor == 'false'">
+          <p style='color:red'>{{pYr.respuesta}}</p>   
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
 </ion-content>
