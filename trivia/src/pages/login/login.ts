@@ -27,7 +27,7 @@ export class Login {
       },
       (err) => {
           // something didn't work
-        alert(err);
+        console.log(err);
       }
     );
     //this.af.auth.subscribe(auth => console.log(auth));    

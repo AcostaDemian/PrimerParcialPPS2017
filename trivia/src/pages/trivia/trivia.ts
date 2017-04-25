@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 import { HomePage } from '../home/home';
@@ -27,7 +28,8 @@ export class Trivia {
   resultado:Array<any>=[];
   preguntasYrespuestas:Array<any>=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public af:AngularFire) {  
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+  public af:AngularFire, public alertCtrl:AlertController, public toastCtrl: ToastController) {  
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);  
     this.preguntas = af.database.list('/preguntas');  
     this.respuestas = af.database.list('/respuestas');  
@@ -37,6 +39,7 @@ export class Trivia {
     });
   }
 
+  //Genera un nro random que va a corresponder a una pregunta
   generarRandom(){
     do{
       if(this.preguntasRespondidas.length >= 3){
@@ -51,7 +54,9 @@ export class Trivia {
     }while(this.preguntasRespondidas.indexOf(this.preguntaActual) != -1);
   }
 
+  //Verifica la respuesta dada por el usuario con los datos de Firebase
   respuesta(respuestaDada ,respuestaCorrecta,stringRespuestaDada,stringPregunta){
+    let toast;
     if(this.cantidadDePreguntas>this.preguntasRespondidas.length){
       this.preguntasRespondidas.push(this.preguntaActual);
       //Lo que voy a guardar en firebase
@@ -59,16 +64,35 @@ export class Trivia {
       this.respuestasDadas.push(stringRespuestaDada);
       if(respuestaDada == respuestaCorrecta){
         this.resultado.push('true');
-        alert('ACERTASTE'); 
+        //TOAST
+        toast = this.toastCtrl.create({
+          message: 'ACERTASTE',
+          duration: 2000,
+          position: 'middle',
+          cssClass: 'clase-toast-acierto'
+        });   
         this.cantidadDePreguntasCorrectas++;
       }else{
         this.resultado.push('false');
-        alert('ERRASTE');
+        //TOAST
+        toast = this.toastCtrl.create({
+          message: 'FALLASTE',
+          duration: 2000,
+          position: 'middle',
+          cssClass: 'clase-toast-fallo'
+        });   
       }
-      this.generarRandom();  
+
+      toast.present();
+
+      toast.onDidDismiss(() => {
+        this.generarRandom(); 
+        console.log('Dismissed toast');
+      }); 
     }
   }
 
+  //Guardo la informacion(preguntas respondidas con sus respuestas)
   guardarInformacion(){
     for(var i=(3-1);i>=0;i--){
       //console.log(this.preguntasRespondidasString[i]);
@@ -79,6 +103,14 @@ export class Trivia {
         'valor':this.resultado[i]})
     }
       //console.log(this.preguntasYrespuestas);
+
+    //Alert de Ionic
+    let alert = this.alertCtrl.create({
+      title: 'Gracias por jugar',
+      subTitle: '' ,
+      buttons: ['OK']
+    });
+    alert.present();
 
     this.respuestas.update(this.usuarioLogeado.auth.uid,{
             "cantidadCorrectas" : this.cantidadDePreguntasCorrectas,

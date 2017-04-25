@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams ,ViewController } from 'ionic-angular';
+import { NavController, NavParams ,ViewController, AlertController } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable, FirebaseAuthState } from 'angularfire2';
 
 @Component({
@@ -10,9 +10,11 @@ export class Signup {
   persona={};
   private authState: FirebaseAuthState;
 
-  constructor(public navParams: NavParams, public viewCtrl: ViewController, public af: AngularFire) {}
+  constructor(public navParams: NavParams, public viewCtrl: ViewController, 
+  public af: AngularFire,private alertCtrl: AlertController) {}
 
   signup(persona){
+    try{
     this.af.auth.createUser({
         email: persona.email,
         password: persona.pass
@@ -25,10 +27,10 @@ export class Signup {
         console.log(user);
         this.af.auth.logout();
         this.viewCtrl.dismiss();
-      }).catch(
-        (err) => {
-        console.log(err);
-      })
+      })}
+      catch(error){
+        console.log(error);
+      }      
   }
 
   cancelar(){
