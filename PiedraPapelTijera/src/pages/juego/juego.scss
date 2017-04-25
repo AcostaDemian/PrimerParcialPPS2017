@@ -1,0 +1,21 @@
+page-trivia {
+
+}
+
+.pregunta-trivia {
+    text-align: center;
+  }
+
+.clase-toast-fallo {
+  > div{
+       background-color:red!important;
+       border-radius: 12px;
+   }
+}
+
+.clase-toast-acierto {
+  > div{
+       background-color:#32db64!important;
+       border-radius: 12px;
+   }
+}

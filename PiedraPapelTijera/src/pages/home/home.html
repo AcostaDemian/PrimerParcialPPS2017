@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    {{usuarioLogeado.auth.displayName}}
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+  
+  <div *ngFor="let pregYresp of preguntaYrespuestas">
+    <div *ngFor="let pYr of pregYresp">
+      <ion-card>      
+        <ion-card-header>
+          {{pYr.pregunta}}
+        </ion-card-header>        
+        <ion-card-content *ngIf="pYr.valor == 'true'">
+          <p style='color:green'>{{pYr.respuesta}}</p>   
+        </ion-card-content>     
+        <ion-card-content *ngIf="pYr.valor == 'false'">
+          <p style='color:red'>{{pYr.respuesta}}</p>   
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
