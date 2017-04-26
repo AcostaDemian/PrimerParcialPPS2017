@@ -27,7 +27,10 @@ export class Signup {
         console.log(user);
         this.af.auth.logout();
         this.viewCtrl.dismiss();
-      })}
+      }).catch(
+        (error) =>{
+          console.log(error);
+        })}
       catch(error){
         console.log(error);
       }      

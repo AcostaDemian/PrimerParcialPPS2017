@@ -10,45 +10,60 @@
 
 <ion-content padding> 
 
-  <div *ngFor="let ganado of Ganados; let i=index">
-    <div *ngIf="i<5">      
-      <ion-card>      
-        <ion-card-header>
-          {{ganado.nombre}}
-        </ion-card-header>  
-        <ion-card-content>
-          <p style='color:green'>{{ganado.resultado}}</p>  
-          <p style='color:green'>{{ganado.fecha}}</p>   
-        </ion-card-content>  
-      </ion-card>
+  <ion-item>
+    <ion-label>Seleccione un metodo de Busqueda</ion-label>
+    <ion-select  [(ngModel)]="seleccion">
+      <ion-option value="Ganados" selected>Ganados</ion-option>
+      <ion-option value="Empatados">Empatados</ion-option>
+      <ion-option value="Perdidos">Perdidos</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <div *ngIf="seleccion=='Ganados'">
+    <div *ngFor="let ganado of Ganados; let i=index">
+      <div *ngIf="i<5">      
+        <ion-card>      
+          <ion-card-header>
+            {{ganado.nombre}}
+          </ion-card-header>  
+          <ion-card-content>
+            <p style='color:green'>{{ganado.resultado}}</p>  
+            <p style='color:green'>{{ganado.fecha}}</p>   
+          </ion-card-content>  
+        </ion-card>
+      </div>
     </div>
   </div>
 
-  <div *ngFor="let empatado of Empatados; let i=index">
-    <div *ngIf="i<5">      
-      <ion-card>      
-        <ion-card-header>
-          {{empatado.nombre}}
-        </ion-card-header>  
-        <ion-card-content>
-          <p style='color:orange'>{{empatado.resultado}}</p>  
-          <p style='color:orange'>{{empatado.fecha}}</p> 
-        </ion-card-content>
-      </ion-card>
+  <div *ngIf="seleccion=='Empatados'">    
+    <div *ngFor="let empatado of Empatados; let i=index">
+      <div *ngIf="i<5">      
+        <ion-card>      
+          <ion-card-header>
+            {{empatado.nombre}}
+          </ion-card-header>  
+          <ion-card-content>
+            <p style='color:orange'>{{empatado.resultado}}</p>  
+            <p style='color:orange'>{{empatado.fecha}}</p> 
+          </ion-card-content>
+        </ion-card>
+      </div>
     </div>
   </div>
 
-  <div *ngFor="let perdido of Perdidos; let i=index">
-    <div *ngIf="i<5">      
-      <ion-card>      
-        <ion-card-header>
-          {{perdido.nombre}}
-        </ion-card-header>  
-        <ion-card-content >
-          <p style='color:red'>{{perdido.resultado}}</p>  
-          <p style='color:red'>{{perdido.fecha}}</p> 
-        </ion-card-content> 
-      </ion-card>
+  <div *ngIf="seleccion=='Perdidos'">   
+    <div *ngFor="let perdido of Perdidos; let i=index">
+      <div *ngIf="i<5">      
+        <ion-card>      
+          <ion-card-header>
+            {{perdido.nombre}}
+          </ion-card-header>  
+          <ion-card-content >
+            <p style='color:red'>{{perdido.resultado}}</p>  
+            <p style='color:red'>{{perdido.fecha}}</p> 
+          </ion-card-content> 
+        </ion-card>
+      </div>
     </div>
   </div>
 

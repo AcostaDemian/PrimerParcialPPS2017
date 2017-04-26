@@ -27,10 +27,7 @@ export class Juego {
   constructor(public navCtrl: NavController, public navParams: NavParams, 
   public af:AngularFire, public alertCtrl:AlertController, public toastCtrl: ToastController) {  
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);  
-    //console.log(this.numeroRandom);
-    var today = new Date();
-    this.fecha= today.getDate()+'/'+(today.getUTCMonth()+1)+'/'+today.getFullYear()+' '
-                +today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
+    //console.log(this.numeroRandom);    
     //console.log(this.fecha);
   }
 
@@ -113,6 +110,9 @@ export class Juego {
 
   //Guardo la informacion(preguntas respondidas con sus respuestas)
   guardarInformacion(){
+    var today = new Date();
+    this.fecha= today.getDate()+'/'+(today.getUTCMonth()+1)+'/'+today.getFullYear()+' '
+                +today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     //var updateNombre= this.af.database.list('/respuestasJuego/');
     //updateNombre.update(this.usuarioLogeado.auth.uid,{nombre:this.usuarioLogeado.auth.displayName});
 

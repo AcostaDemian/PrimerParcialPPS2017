@@ -18,6 +18,7 @@ export class HomePage {
   Ganados:Array<any>=[];
   Empatados:Array<any>=[];
   Perdidos:Array<any>=[];
+  seleccion='Ganados';
 
   constructor(public navCtrl: NavController, public af: AngularFire) {
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);
