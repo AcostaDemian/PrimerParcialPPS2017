@@ -29,7 +29,8 @@ export class Juego {
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);  
     //console.log(this.numeroRandom);
     var today = new Date();
-    this.fecha= today.getDate()+'/'+(today.getUTCMonth()+1)+'/'+today.getFullYear()+' '+today.getHours()+':'+today.getMinutes();
+    this.fecha= today.getDate()+'/'+(today.getUTCMonth()+1)+'/'+today.getFullYear()+' '
+                +today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
     //console.log(this.fecha);
   }
 
@@ -112,13 +113,15 @@ export class Juego {
 
   //Guardo la informacion(preguntas respondidas con sus respuestas)
   guardarInformacion(){
-    var updateNombre= this.af.database.list('/respuestasJuego/');
-    updateNombre.update(this.usuarioLogeado.auth.uid,{nombre:this.usuarioLogeado.auth.displayName});
+    //var updateNombre= this.af.database.list('/respuestasJuego/');
+    //updateNombre.update(this.usuarioLogeado.auth.uid,{nombre:this.usuarioLogeado.auth.displayName});
 
-    var respuestas = this.af.database.list('/respuestasJuego/'+this.usuarioLogeado.auth.uid+'/');
+    var respuestas = this.af.database.list('/respuestasJuego/'//+this.usuarioLogeado.auth.uid+'/'
+    );
     respuestas.push({
       'resultado':this.resultado,
-      'fecha':this.fecha
+      'fecha':this.fecha,
+      'nombre':this.usuarioLogeado.auth.displayName
     });
   }
 

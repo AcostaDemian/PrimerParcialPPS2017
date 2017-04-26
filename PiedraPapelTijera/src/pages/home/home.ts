@@ -10,20 +10,23 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class HomePage {  
   preguntas: FirebaseListObservable<any>;
   respuestas: FirebaseListObservable<any>;
+  respuestasPPTdesordenadas:Array<any>=[];
   respuestasPPT:Array<any>=[];
   usuarioLogeado;
 
   constructor(public navCtrl: NavController, public af: AngularFire) {
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);
     //console.log(this.usuarioLogeado.auth);
-    this.respuestas = af.database.list('/respuestasJuego/'+this.usuarioLogeado.auth.uid+'/'); 
+    this.respuestas = af.database.list('/respuestasJuego/'//+this.usuarioLogeado.auth.uid+'/'
+    ); 
 
     this.respuestas.subscribe(respuestas => {
         // items is an array
         respuestas.forEach(respuesta => {
-          this.respuestasPPT.push(respuesta);
+          this.respuestasPPTdesordenadas.push(respuesta);
         });        
         //console.log(this.respuestasPPT)
     });
+    this.respuestasPPT = this.respuestasPPTdesordenadas.slice().reverse();
   }
 }

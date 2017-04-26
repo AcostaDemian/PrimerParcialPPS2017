@@ -11,22 +11,23 @@
 <ion-content padding> 
   <div *ngFor="let rtaPPT of respuestasPPT; let i=index">
     <div *ngIf="i<10">
-      <div *ngIf="rtaPPT.resultado != null">
-        <ion-card>      
-          <ion-card-header>
-            {{rtaPPT.resultado}}
-          </ion-card-header>  
-          <ion-card-content *ngIf="rtaPPT.resultado == 'GANASTE'">
-            <p style='color:green'>{{rtaPPT.fecha}}</p>   
-          </ion-card-content>     
-          <ion-card-content *ngIf="rtaPPT.resultado == 'PERDISTE'">
-            <p style='color:red'>{{rtaPPT.fecha}}</p> 
-          </ion-card-content> 
-          <ion-card-content *ngIf="rtaPPT.resultado == 'EMPATASTE'">
-            <p style='color:orange'>{{rtaPPT.fecha}}</p> 
-          </ion-card-content>
-        </ion-card>
-      </div>
+      <ion-card>      
+        <ion-card-header>
+          {{rtaPPT.nombre}}
+        </ion-card-header>  
+        <ion-card-content *ngIf="rtaPPT.resultado == 'GANASTE'">
+          <p style='color:green'>{{rtaPPT.resultado}}</p>  
+          <p style='color:green'>{{rtaPPT.fecha}}</p>   
+        </ion-card-content>     
+        <ion-card-content *ngIf="rtaPPT.resultado == 'PERDISTE'">
+          <p style='color:red'>{{rtaPPT.resultado}}</p>  
+          <p style='color:red'>{{rtaPPT.fecha}}</p> 
+        </ion-card-content> 
+        <ion-card-content *ngIf="rtaPPT.resultado == 'EMPATASTE'">
+          <p style='color:orange'>{{rtaPPT.resultado}}</p>  
+          <p style='color:orange'>{{rtaPPT.fecha}}</p> 
+        </ion-card-content>
+      </ion-card>
     </div>
   </div>
 </ion-content>
