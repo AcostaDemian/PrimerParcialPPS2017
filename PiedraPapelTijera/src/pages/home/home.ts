@@ -10,9 +10,14 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class HomePage {  
   preguntas: FirebaseListObservable<any>;
   respuestas: FirebaseListObservable<any>;
-  respuestasPPTdesordenadas:Array<any>=[];
+  Ganadosdesordenadas:Array<any>=[];
+  Empatadosdesordenadas:Array<any>=[];
+  Perdidosdesordenadas:Array<any>=[];
   respuestasPPT:Array<any>=[];
   usuarioLogeado;
+  Ganados:Array<any>=[];
+  Empatados:Array<any>=[];
+  Perdidos:Array<any>=[];
 
   constructor(public navCtrl: NavController, public af: AngularFire) {
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);
@@ -23,10 +28,19 @@ export class HomePage {
     this.respuestas.subscribe(respuestas => {
         // items is an array
         respuestas.forEach(respuesta => {
-          this.respuestasPPTdesordenadas.push(respuesta);
+          //console.log(respuesta.resultado);
+          if(respuesta.resultado == 'GANASTE'){
+            this.Ganadosdesordenadas.push(respuesta);}
+          if(respuesta.resultado == 'EMPATASTE'){
+            this.Empatadosdesordenadas.push(respuesta);}
+          if(respuesta.resultado == 'PERDISTE'){
+            this.Perdidosdesordenadas.push(respuesta);}        
         });        
         //console.log(this.respuestasPPT)
+      this.Ganados = this.Ganadosdesordenadas.slice().reverse();
+      this.Empatados = this.Empatadosdesordenadas.slice().reverse();
+      this.Perdidos = this.Perdidosdesordenadas.slice().reverse();
     });
-    this.respuestasPPT = this.respuestasPPTdesordenadas.slice().reverse();
+    //console.log(this.respuestasPPT);
   }
 }

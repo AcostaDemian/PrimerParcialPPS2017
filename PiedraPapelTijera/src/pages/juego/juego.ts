@@ -119,9 +119,9 @@ export class Juego {
     var respuestas = this.af.database.list('/respuestasJuego/'//+this.usuarioLogeado.auth.uid+'/'
     );
     respuestas.push({
+      'nombre':this.usuarioLogeado.auth.displayName,
       'resultado':this.resultado,
       'fecha':this.fecha,
-      'nombre':this.usuarioLogeado.auth.displayName
     });
   }
 
