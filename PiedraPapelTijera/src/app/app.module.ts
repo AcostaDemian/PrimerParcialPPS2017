@@ -17,6 +17,8 @@ import { ModalPage } from '../pages/modal/modal';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import{ ReversePipe } from './reverse';
+
 export const firebaseConfig = {
     apiKey: "AIzaSyBVmTiOsYOMn1xPgKFtTt3ArSidLBmSFmk",
     authDomain: "trivia-e541f.firebaseapp.com",
@@ -40,7 +42,8 @@ const myFirebaseAuthConfig = {
     About,
     Juego,
     Signup,
-    ModalPage
+    ModalPage,
+    ReversePipe   
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,6 @@ const myFirebaseAuthConfig = {
     About,
     Juego,
     Signup,
-    ModalPage
   ],
   providers: [
     StatusBar,

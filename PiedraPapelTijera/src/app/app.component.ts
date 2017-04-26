@@ -9,6 +9,7 @@ import { Login } from '../pages/login/login';
 import { About } from '../pages/about/about';
 import { Juego } from '../pages/juego/juego';
 
+
 @Component({
   templateUrl: 'app.html'
 })

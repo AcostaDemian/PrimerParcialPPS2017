@@ -3,7 +3,6 @@ import { NavController } from 'ionic-angular';
 
 import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
 
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -11,22 +10,20 @@ import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'a
 export class HomePage {  
   preguntas: FirebaseListObservable<any>;
   respuestas: FirebaseListObservable<any>;
-  preguntaYrespuestas:Array<any>=[];
+  respuestasPPT:Array<any>=[];
   usuarioLogeado;
 
   constructor(public navCtrl: NavController, public af: AngularFire) {
     af.auth.subscribe(auth => this.usuarioLogeado =  auth);
-    console.log(this.usuarioLogeado.auth);
-
-    this.preguntas = af.database.list('/preguntas');  
-    this.respuestas = af.database.list('/respuestas'); 
+    //console.log(this.usuarioLogeado.auth);
+    this.respuestas = af.database.list('/respuestasJuego/'+this.usuarioLogeado.auth.uid+'/'); 
 
     this.respuestas.subscribe(respuestas => {
         // items is an array
         respuestas.forEach(respuesta => {
-            if(respuesta.$key==this.usuarioLogeado.auth.uid)
-              this.preguntaYrespuestas.push(respuesta.preguntasYrespuestas);
-        });
+          this.respuestasPPT.push(respuesta);
+        });        
+        //console.log(this.respuestasPPT)
     });
   }
 }
