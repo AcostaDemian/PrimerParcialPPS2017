@@ -23,9 +23,9 @@
           {{pregunta.pregunta}}
         </ion-card-header>
         <ion-card-content>
-          <button (click)='respuesta("r1",pregunta.respuesta,pregunta.opciones.r1,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r1}}</button>
-          <button (click)='respuesta("r2",pregunta.respuesta,pregunta.opciones.r2,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r2}}</button>
-          <button (click)='respuesta("r3",pregunta.respuesta,pregunta.opciones.r3,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r3}}</button>      
+          <button id='botoncito1' (click)='respuesta("r1",pregunta.respuesta,pregunta.opciones.r1,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r1}}</button>
+          <button id='botoncito2' (click)='respuesta("r2",pregunta.respuesta,pregunta.opciones.r2,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r2}}</button>
+          <button id='botoncito3' (click)='respuesta("r3",pregunta.respuesta,pregunta.opciones.r3,pregunta.pregunta)' ion-button full color="light">{{pregunta.opciones.r3}}</button>      
         </ion-card-content>
       </ion-card>
     </div>

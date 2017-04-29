@@ -57,6 +57,10 @@ export class Trivia {
   //Verifica la respuesta dada por el usuario con los datos de Firebase
   respuesta(respuestaDada ,respuestaCorrecta,stringRespuestaDada,stringPregunta){
     let toast;
+    (<HTMLInputElement> document.getElementById("botoncito1")).disabled = true;
+    (<HTMLInputElement> document.getElementById("botoncito2")).disabled = true;
+    (<HTMLInputElement> document.getElementById("botoncito3")).disabled = true;
+
     if(this.cantidadDePreguntas>this.preguntasRespondidas.length){
       this.preguntasRespondidas.push(this.preguntaActual);
       //Lo que voy a guardar en firebase
@@ -87,6 +91,9 @@ export class Trivia {
 
       toast.onDidDismiss(() => {
         this.generarRandom(); 
+        (<HTMLInputElement> document.getElementById("botoncito1")).disabled = false;
+        (<HTMLInputElement> document.getElementById("botoncito2")).disabled = false;
+        (<HTMLInputElement> document.getElementById("botoncito3")).disabled = false;
         console.log('Dismissed toast');
       }); 
     }
