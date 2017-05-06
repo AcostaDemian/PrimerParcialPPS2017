@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
@@ -49,8 +48,7 @@ const myFirebaseAuthConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig),
-    Ng2SmartTableModule
+    AngularFireModule.initializeApp(firebaseConfig,myFirebaseAuthConfig)    
   ],
   bootstrap: [IonicApp],
   entryComponents: [
