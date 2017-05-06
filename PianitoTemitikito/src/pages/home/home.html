@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
+    {{usuarioLogeado.auth.displayName}}
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding> 
+
+  <div *ngFor="let secuencia of SecuenciaPiano" style="text-align:center;">
+    <ion-card-content *ngIf="secuencia == 'haunter'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/haunter.png" alt="Haunter">
+    </ion-card-content>  
+
+    <ion-card-content *ngIf="secuencia == 'charizard'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/charizard.png" alt="Charizard">
+    </ion-card-content>  
+
+    <ion-card-content *ngIf="secuencia == 'mrmine'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/mr-mime.png" alt="Mr. Mime">
+    </ion-card-content>  
+
+    <ion-card-content *ngIf="secuencia == 'ninetales'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/black-white/normal/ninetales.png" alt="Ninetales">
+    </ion-card-content>  
+
+    <ion-card-content *ngIf="secuencia == 'pikachu'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/black-white/normal/pikachu-f.png" alt="Pikachu">
+    </ion-card-content>  
+
+    <ion-card-content *ngIf="secuencia == 'rapidash'" id='mylist'>    
+      <img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/rapidash.png" alt="Rapidash">
+    </ion-card-content>     
+  </div>
+
+  <button ion-button full (click)='reproducir()'>Reproducir Secuencia</button>
+
+</ion-content>

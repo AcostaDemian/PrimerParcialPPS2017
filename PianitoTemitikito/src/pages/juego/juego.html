@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Pianito</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-header class='pregunta-trivia'>
+      Elija su Sonido
+    </ion-card-header>
+    <ion-card-content style="text-align:center;">
+      
+      <button (click)='sonido("haunter")' id='myimage'><img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/haunter.png" alt="Haunter"></button>
+      <button (click)='sonido("charizard")' id='myimage'><img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/charizard.png" alt="Charizard"></button>
+      <button (click)='sonido("mrmine")' id='myimage'><img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/mr-mime.png" alt="Mr. Mime"></button>
+      <br>
+      <button (click)='sonido("ninetales")' id='myimage'><img src="https://img.pokemondb.net/sprites/black-white/normal/ninetales.png" alt="Ninetales"></button>
+      <button (click)='sonido("pikachu")' id='myimage'><img src="https://img.pokemondb.net/sprites/black-white/normal/pikachu-f.png" alt="Pikachu"></button>
+      <button (click)='sonido("rapidash")' id='myimage'><img src="https://img.pokemondb.net/sprites/diamond-pearl/normal/rapidash.png" alt="Rapidash"></button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div *ngFor='let piano of pianito'>
+    {{piano}}
+  </div>
+
+  <button ion-button full (click)='guardarInformacion()'>Guardar Informacion</button>
+  <button ion-button full (click)='reiniciarListado()'>Reiniciar Secuencia</button>
+
+</ion-content>
